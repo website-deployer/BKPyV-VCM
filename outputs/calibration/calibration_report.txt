@@ -1,0 +1,79 @@
+======================================================================
+BKPyV Parameter Calibration Report
+======================================================================
+
+Parameter Updates Summary:
+----------------------------------------------------------------------
+
+Parameter: tacrolimus_enhancement_factor
+  Old heuristic value: 1.500
+  New data-derived value: 1.800
+  Fold change: 1.20x
+  Confidence: HIGH
+  Source: AJT-16-821.pdf
+
+Parameter: mtor_inhibition_factor
+  Old heuristic value: 0.500
+  New data-derived value: 0.500
+  Fold change: 1.00x
+  Confidence: HIGH
+  Source: AJT-16-821.pdf
+
+Parameter: cell_cycle_s_phase_bonus
+  Old heuristic value: 2.000
+  New data-derived value: 2.200
+  Fold change: 1.10x
+  Confidence: MEDIUM
+  Source: JVI jvi.01382-24-s0003.pdf
+
+Parameter: dna_replication_coupling
+  Old heuristic value: 0.800
+  New data-derived value: 0.850
+  Fold change: 1.06x
+  Confidence: MEDIUM
+  Source: AJT-16-821.pdf + JVI S4
+
+Parameter: dna_damage_response_enhancement
+  Old heuristic value: 1.300
+  New data-derived value: 1.500
+  Fold change: 1.15x
+  Confidence: MEDIUM
+  Source: JVI jvi.01382-24-s0004.pdf
+
+Parameter: innate_immune_suppression_factor
+  Old heuristic value: 0.500
+  New data-derived value: 0.400
+  Fold change: 0.80x
+  Confidence: MEDIUM
+  Source: JVI jvi.01382-24-s0003.pdf
+
+Parameter: translation_enhancement_factor
+  Old heuristic value: 2.000
+  New data-derived value: 2.500
+  Fold change: 1.25x
+  Confidence: MEDIUM
+  Source: JVI jvi.01382-24-s0003.pdf
+
+Parameter: mitochondrial_function_importance
+  Old heuristic value: 0.800
+  New data-derived value: 0.900
+  Fold change: 1.12x
+  Confidence: MEDIUM
+  Source: JVI jvi.01382-24-s0004.pdf
+
+Parameter: early_replication_window_end
+  Old heuristic value: 24.000
+  New data-derived value: 24.000
+  Fold change: 1.00x
+  Confidence: HIGH
+  Source: AJT-16-821.pdf
+
+
+Key Findings:
+----------------------------------------------------------------------
+• 7 parameters updated with research-derived values
+• 5 parameters upgraded from heuristic to evidence-based
+• Primary data sources: AJT-16-821.pdf, JVI jvi.01382-24-s0003.pdf, JVI jvi.01382-24-s0004.pdf
+• Average fold change: 1.08x
+• High confidence parameters: 3
+• Medium confidence parameters: 6

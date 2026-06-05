@@ -1,0 +1,21 @@
+{
+  "no_switch": {
+    "peak_viral_load": 3763050.619375907,
+    "week_52_viral_load": 31560.870432599117
+  },
+  "switch_week_8": {
+    "peak_viral_load": 512308.0515269224,
+    "week_52_viral_load": 12.683386362670086,
+    "reduction_vs_no_switch": 99.95981293865212
+  },
+  "switch_week_4": {
+    "peak_viral_load": 101729.15644126713,
+    "week_52_viral_load": 3.82016594578096,
+    "reduction_vs_no_switch": 99.9878958790001
+  },
+  "clinical_thresholds": {
+    "screening_threshold": 1000,
+    "treatment_threshold": 10000
+  },
+  "interpretation": "Early intervention (switch at week 4) provides greatest viral load reduction compared to delayed intervention (switch at week 8). This supports clinical guidelines for early screening and intervention."
+}

@@ -1,0 +1,12 @@
+{
+  "experiment_id": "mechanistic_tcell_001",
+  "simulator_type": "mechanistic",
+  "plugin": "immune_tcell",
+  "config_id": "tcell_baseline",
+  "start_time": "2026-06-03T04:14:33.328973",
+  "end_time": "2026-06-03T04:14:33.403865",
+  "success": true,
+  "error_message": null,
+  "metadata": {},
+  "n_steps": 150
+}

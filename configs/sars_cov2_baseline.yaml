@@ -1,0 +1,26 @@
+# SARS-CoV-2 Baseline Configuration
+experiment_id: sars_cov2_baseline
+plugin: virus_host.sars_cov2
+simulator: hybrid
+simulation_length: 100.0
+timestep: 1.0
+output_path: outputs/sars_cov2/baseline/
+save_interval: 1
+seed: 42
+
+# Environment settings
+environment:
+  temperature: 37.0
+  ph: 7.4
+  oxygen_level: 21.0
+  glucose_concentration: 5.0
+  nutrient_availability: {}
+  stress_factors: {}
+
+# Perturbations (uninfected baseline)
+perturbations: []
+
+# Metadata
+metadata:
+  description: "Baseline uninfected host cell for SARS-CoV-2"
+  researcher: "ISEF Project"

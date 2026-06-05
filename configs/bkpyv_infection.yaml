@@ -1,0 +1,42 @@
+# BKPyV Infection Configuration - Active BKPyV Replication
+experiment_id: bkpyv_infection
+plugin: transplant.bk_polyomavirus
+simulator: bkpyv_specific
+simulation_length: 100.0
+timestep: 1.0
+output_path: outputs/bkpyv/infection/
+save_interval: 1
+seed: 42
+
+# Environment settings
+environment:
+  temperature: 37.0
+  ph: 7.4
+  oxygen_level: 21.0
+  glucose_concentration: 5.0
+  nutrient_availability: {}
+  stress_factors: {}
+
+# BKPyV infection perturbation
+perturbations:
+  - id: bkpyv_infection
+    name: "BKPyV infection"
+    perturbation_type: viral_infection
+    target_id: null
+    magnitude: 1.0
+    duration: null
+    timing: 10.0
+    parameters:
+      infection_dose: 1000
+      cell_tropism: "kidney_tubular"
+
+# Simulator parameters
+metadata:
+  description: "BKPyV infection in kidney tubular epithelial cell"
+  tacrolimus_enhancement_factor: 1.5
+  mtor_inhibition_factor: 0.5
+  t_antigen_replication_threshold: 0.5
+  cell_cycle_s_phase_bonus: 2.0
+  dna_replication_coupling: 0.8
+  innate_immune_suppression_factor: 0.3
+  dna_damage_response_enhancement: 1.3

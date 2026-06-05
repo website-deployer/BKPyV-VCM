@@ -1,0 +1,94 @@
+# BKPyV Tacrolimus vs Sirolimus Comparison Configuration
+# Reference: Compare drug effects - tacrolimus activates, sirolimus inhibits (AJT-16-821.pdf)
+# This config demonstrates the mechanistic distinction: opposite effects through FKBP-12
+
+experiment_id: bkpyv_comparison_tac_vs_siro
+plugin: transplant.bk_polyomavirus
+simulator: bkpyv_specific
+simulation_length: 100.0
+timestep: 1.0
+output_path: outputs/bkpyv/comparison_tac_vs_siro/
+
+# Simulator parameters (research-validated)
+simulator_params:
+  # Drug effect parameters (AJT-16-821.pdf)
+  tacrolimus_enhancement_factor: 1.5  # Tacrolimus activates via FKBP-12
+  mtor_inhibition_factor: 0.5  # Sirolimus IC90 = 4 ng/mL
+
+  # Replication parameters
+  t_antigen_replication_threshold: 0.5
+  cell_cycle_s_phase_bonus: 2.0
+  dna_replication_coupling: 0.8
+
+  # Host response parameters
+  innate_immune_suppression_factor: 0.5
+  dna_damage_response_enhancement: 1.3
+
+  # Single-cell pathway-validated parameters
+  translation_enhancement_factor: 2.0
+  mitochondrial_function_importance: 0.8
+  protein_degradation_inhibition: 0.3
+
+# Initial state overrides
+initial_state_overrides:
+  viral_load: 0.0
+  infection_status: uninfected
+  viral_replication_phase: none
+  t_antigen_level: none
+  host_dna_synthesis: active
+  cell_cycle_phase: G0/G1
+
+# Drug exposure (none - drugs applied via perturbations for comparison)
+drug_exposure:
+  tacrolimus: 0.0
+  sirolimus: 0.0
+  everolimus: 0.0
+
+# Perturbations - comparison of drug effects
+perturbations:
+  # Scenario 1: Tacrolimus treatment
+  - id: tacrolimus_arm
+    perturbation_type: drug_treatment
+    target_id: FKBP1A
+    magnitude: 1.0
+    timing: 0.0
+    parameters:
+      mechanism: fkbp12_activation
+      effect_on_viral_replication: activates
+      arm: tacrolimus
+
+  - id: infection_tacrolimus
+    perturbation_type: viral_infection
+    target_id: viral_LT
+    magnitude: 0.5
+    timing: 10.0
+    parameters:
+      mechanism: initial_infection
+      arm: tacrolimus
+
+  # Scenario 2: Sirolimus treatment
+  - id: sirolimus_arm
+    perturbation_type: drug_treatment
+    target_id: MTOR
+    magnitude: 1.0
+    timing: 0.0
+    parameters:
+      mechanism: mtor_inhibition
+      effect_on_viral_replication: suppresses
+      effectiveness_window: early
+      arm: sirolimus
+
+  - id: infection_sirolimus
+    perturbation_type: viral_infection
+    target_id: viral_LT
+    magnitude: 0.5
+    timing: 10.0
+    parameters:
+      mechanism: initial_infection
+      arm: sirolimus
+
+# Notes for running comparison:
+# To run this comparison, you would typically run two separate simulations:
+# 1. Run with only tacrolimus perturbations (filter by arm: tacrolimus)
+# 2. Run with only sirolimus perturbations (filter by arm: sirolimus)
+# 3. Compare viral load trajectories, replication rates, and pathway activities

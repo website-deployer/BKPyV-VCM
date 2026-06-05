@@ -1,0 +1,68 @@
+# BKPyV Baseline Configuration - Uninfected Kidney Cell
+# Research-grounded baseline scenario for healthy renal tubular epithelial cell
+experiment_id: bkpyv_baseline_uninfected
+plugin: transplant.bk_polyomavirus
+simulator: bkpyv_specific
+simulation_length: 100.0
+timestep: 1.0
+output_path: outputs/bkpyv/baseline/
+save_interval: 1
+seed: 42
+
+# Environment settings (physiological conditions)
+environment:
+  temperature: 37.0
+  ph: 7.4
+  oxygen_level: 21.0
+  glucose_concentration: 5.0
+  nutrient_availability: {}
+  stress_factors: {}
+
+# No perturbations - baseline uninfected state
+perturbations: []
+
+# Simulator parameters (evidence-based where available)
+# Source: docs/bkpyv_research_to_model_map.md
+simulator_parameters:
+  # Drug effect parameters (HIGH confidence)
+  tacrolimus_enhancement_factor: 2.0  # Updated to clinical OR 2.0-2.3
+  sirolimus_inhibition_factor: 0.5  # IC90 = 4 ng/mL (90% inhibition)
+  everolimus_inhibition_factor: 0.5  # Analogous to sirolimus
+  drug_effectiveness_window: 24.0  # Early phase window (hours)
+  late_phase_drug_resistance: 0.3  # Sirolimus reduced to 30% in late phase
+  
+  # Viral replication parameters (MEDIUM confidence)
+  t_antigen_replication_threshold: 0.5  # T antigen requirement
+  dna_replication_coupling: 0.8  # Host-viral coupling
+  cell_cycle_s_phase_bonus: 2.0  # S-phase optimal
+  viral_replication_rate: 0.1  # Base replication rate
+  viral_clearance_rate: 0.1  # Base clearance rate
+  
+  # Host response parameters (MEDIUM confidence)
+  innate_immune_suppression_factor: 0.5  # Immune evasion
+  dna_damage_response_enhancement: 1.3  # DDR permissive effect
+  
+  # Single-cell pathway parameters (MEDIUM confidence)
+  translation_enhancement_factor: 2.0  # Translation pathway elevation
+  mitochondrial_function_importance: 0.8  # Mitochondrial stress
+  mitochondrial_stress_late_phase_factor: 0.5  # Late-phase specific
+  protein_degradation_inhibition: 0.3  # Proteasome involvement
+  
+  # Clinical risk factors (HIGH confidence)
+  age_risk_multiplier: 1.9  # Age >50 years
+  male_sex_risk_multiplier: 2.3  # Male sex
+  prior_transplant_risk_multiplier: 3.0  # Prior transplant
+  hla_mismatch_risk_multiplier: 1.3  # HLA 4-6 mismatch
+  
+  # Cell cycle parameters (LOW confidence)
+  g0g1_to_s_transition_rate: 0.05  # Cell cycle progression
+  s_to_g2m_transition_rate: 0.03  # Cell cycle progression
+  
+  # Immune evasion parameters (MEDIUM confidence)
+  antigen_presentation_suppression_rate: 0.2  # MHC suppression
+  interferon_response_suppression: 0.4  # Interferon evasion
+
+metadata:
+  description: "Baseline uninfected kidney tubular epithelial cell with research-grounded parameters"
+  research_grounding: "All parameters documented in src/vcm/plugins/transplant/bk_polyomavirus/parameters.py"
+  notes: "Healthy cell baseline for comparison with infection scenarios"

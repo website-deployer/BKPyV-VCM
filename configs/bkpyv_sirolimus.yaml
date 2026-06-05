@@ -1,0 +1,90 @@
+# BKPyV Infection + Sirolimus (mTOR Inhibitor)
+# Research-grounded: Sirolimus suppresses BKPyV replication via mTOR inhibition
+# Experimental data: IC90 = 4 ng/mL (90% inhibition), effective only in early phase (0-24h)
+experiment_id: bkpyv_sirolimus_exposure
+plugin: transplant.bk_polyomavirus
+simulator: bkpyv_specific
+simulation_length: 100.0
+timestep: 1.0
+output_path: outputs/bkpyv/sirolimus/
+save_interval: 1
+seed: 42
+
+# Environment settings
+environment:
+  temperature: 37.0
+  ph: 7.4
+  oxygen_level: 21.0
+  glucose_concentration: 5.0
+  nutrient_availability: {}
+  stress_factors: {}
+
+# BKPyV infection + sirolimus treatment
+perturbations:
+  - id: sirolimus_treatment
+    name: "Sirolimus (mTOR inhibitor)"
+    perturbation_type: drug_treatment
+    target_id: MTOR
+    magnitude: 1.0
+    duration: null
+    timing: 0.0
+    parameters:
+      mechanism: "mTOR_inhibition"
+      effect_on_viral_replication: "suppresses"
+      concentration_ng_per_mL: 5.0  # Above IC90 of 4 ng/mL
+
+  - id: bkpyv_infection
+    name: "BKPyV infection"
+    perturbation_type: viral_infection
+    target_id: null
+    magnitude: 1.0
+    duration: null
+    timing: 10.0
+    parameters:
+      infection_dose: 1000
+      cell_tropism: "kidney_tubular"
+
+# Simulator parameters with sirolimus-specific research grounding
+simulator_parameters:
+  # Drug effect parameters (sirolimus inhibition highlighted)
+  tacrolimus_enhancement_factor: 2.0  # Baseline (no tacrolimus)
+  sirolimus_inhibition_factor: 0.5  # IC90 = 4 ng/mL
+  everolimus_inhibition_factor: 0.5
+  drug_effectiveness_window: 24.0  # Critical: only effective in early phase
+  late_phase_drug_resistance: 0.3  # Reduced effectiveness in late phase
+  
+  # Viral replication parameters
+  t_antigen_replication_threshold: 0.5
+  dna_replication_coupling: 0.8
+  cell_cycle_s_phase_bonus: 2.0
+  viral_replication_rate: 0.1
+  viral_clearance_rate: 0.1
+  
+  # Host response parameters
+  innate_immune_suppression_factor: 0.5
+  dna_damage_response_enhancement: 1.3
+  
+  # Single-cell pathway parameters
+  translation_enhancement_factor: 2.0
+  mitochondrial_function_importance: 0.8
+  mitochondrial_stress_late_phase_factor: 0.5
+  protein_degradation_inhibition: 0.3
+  
+  # Clinical risk factors
+  age_risk_multiplier: 1.9
+  male_sex_risk_multiplier: 2.3
+  prior_transplant_risk_multiplier: 3.0
+  hla_mismatch_risk_multiplier: 1.3
+  
+  # Cell cycle parameters
+  g0g1_to_s_transition_rate: 0.05
+  s_to_g2m_transition_rate: 0.03
+  
+  # Immune evasion parameters
+  antigen_presentation_suppression_rate: 0.2
+  interferon_response_suppression: 0.4
+
+metadata:
+  description: "BKPyV infection with sirolimus immunosuppression (suppresses replication)"
+  research_grounding: "Sirolimus IC90 = 4 ng/mL (AJT-16-821.pdf). Effective only in early phase (0-24h)."
+  notes: "Expected: Lower viral replication than control, especially in early phase"

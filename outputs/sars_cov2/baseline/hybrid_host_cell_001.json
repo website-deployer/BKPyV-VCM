@@ -1,0 +1,12 @@
+{
+  "experiment_id": "hybrid_host_cell_001",
+  "simulator_type": "hybrid",
+  "plugin": "sars_cov2_host",
+  "config_id": "sars_cov2_baseline",
+  "start_time": "2026-06-03T04:13:21.002684",
+  "end_time": "2026-06-03T04:13:21.103122",
+  "success": true,
+  "error_message": null,
+  "metadata": {},
+  "n_steps": 100
+}

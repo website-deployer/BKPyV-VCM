@@ -1,0 +1,36 @@
+# Minimal Cell with Antibiotic Perturbation
+experiment_id: minimal_cell_antibiotic
+plugin: bacteria.minimal_cell
+simulator: mechanistic
+simulation_length: 50.0
+timestep: 0.5
+output_path: outputs/minimal_cell/antibiotic/
+save_interval: 1
+seed: 42
+
+# Environment settings
+environment:
+  temperature: 37.0
+  ph: 7.4
+  oxygen_level: 21.0
+  glucose_concentration: 5.0
+  nutrient_availability: {}
+  stress_factors:
+    antibiotic: 1.0
+
+# Perturbations
+perturbations:
+  - id: antibiotic_stress
+    name: "Antibiotic stress"
+    perturbation_type: environmental_change
+    target_id: null
+    magnitude: 1.0
+    duration: null
+    timing: 10.0
+    parameters:
+      mechanism: "translation_inhibition"
+
+# Metadata
+metadata:
+  description: "Minimal bacterial cell under antibiotic stress"
+  researcher: "ISEF Project"

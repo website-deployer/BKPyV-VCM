@@ -1,0 +1,64 @@
+# BKPyV Tacrolimus Exposure Configuration
+# Reference: Tacrolimus activates BKPyV replication via FKBP-12 (AJT-16-821.pdf)
+# Clinical data: OR 2.0-2.3 for BKPyVAN vs belatacept
+
+experiment_id: bkpyv_tacrolimus_exposure
+plugin: transplant.bk_polyomavirus
+simulator: bkpyv_specific
+simulation_length: 100.0
+timestep: 1.0
+output_path: outputs/bkpyv/tacrolimus_exposure/
+
+# Simulator parameters (research-validated)
+simulator_params:
+  # Drug effect parameters (AJT-16-821.pdf)
+  tacrolimus_enhancement_factor: 1.5  # Tacrolimus activates via FKBP-12
+  mtor_inhibition_factor: 0.5
+
+  # Replication parameters
+  t_antigen_replication_threshold: 0.5
+  cell_cycle_s_phase_bonus: 2.0
+  dna_replication_coupling: 0.8
+
+  # Host response parameters
+  innate_immune_suppression_factor: 0.5
+  dna_damage_response_enhancement: 1.3
+
+  # Single-cell pathway-validated parameters
+  translation_enhancement_factor: 2.0
+  mitochondrial_function_importance: 0.8
+  protein_degradation_inhibition: 0.3
+
+# Initial state overrides
+initial_state_overrides:
+  viral_load: 0.0
+  infection_status: uninfected
+  viral_replication_phase: none
+  t_antigen_level: none
+  host_dna_synthesis: active
+  cell_cycle_phase: G0/G1
+
+# Drug exposure (tacrolimus - therapeutic level)
+drug_exposure:
+  tacrolimus: 1.0  # Therapeutic tacrolimus concentration
+  sirolimus: 0.0
+  everolimus: 0.0
+
+# Perturbations
+perturbations:
+  - id: tacrolimus_treatment
+    perturbation_type: drug_treatment
+    target_id: FKBP1A  # Tacrolimus binds FKBP-12
+    magnitude: 1.0
+    timing: 0.0  # Drug present before infection
+    parameters:
+      mechanism: fkbp12_activation
+      effect_on_viral_replication: activates
+
+  - id: bkpyv_infection
+    perturbation_type: viral_infection
+    target_id: viral_LT
+    magnitude: 0.5
+    timing: 10.0  # Infection after drug established
+    parameters:
+      mechanism: initial_infection

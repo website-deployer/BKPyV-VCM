@@ -1,0 +1,72 @@
+# BKPyV High Replication Configuration
+# Reference: High-level BKPyV infection (late phase, high viral load)
+
+experiment_id: bkpyv_high_replication
+plugin: transplant.bk_polyomavirus
+simulator: bkpyv_specific
+simulation_length: 150.0
+timestep: 1.0
+output_path: outputs/bkpyv/high_replication/
+
+# Simulator parameters (research-validated)
+simulator_params:
+  # Drug effect parameters (AJT-16-821.pdf)
+  tacrolimus_enhancement_factor: 1.5
+  mtor_inhibition_factor: 0.5
+
+  # Replication parameters
+  t_antigen_replication_threshold: 0.5
+  cell_cycle_s_phase_bonus: 2.0
+  dna_replication_coupling: 0.8
+
+  # Host response parameters
+  innate_immune_suppression_factor: 0.5
+  dna_damage_response_enhancement: 1.3
+
+  # Single-cell pathway-validated parameters
+  translation_enhancement_factor: 2.0
+  mitochondrial_function_importance: 0.8
+  protein_degradation_inhibition: 0.3
+
+# Initial state overrides
+initial_state_overrides:
+  viral_load: 5.0  # High viral load
+  infection_status: active_lytic
+  viral_replication_phase: late  # Late phase (>24h)
+  t_antigen_level: high
+  host_dna_synthesis: active
+  cell_cycle_phase: S  # S-phase optimal for replication
+
+# Drug exposure (none for baseline comparison)
+drug_exposure:
+  tacrolimus: 0.0
+  sirolimus: 0.0
+  everolimus: 0.0
+
+# Pathway activity overrides (reflecting high replication state)
+pathway_activities:
+  dna_replication: 0.9  # Elevated for viral replication
+  cell_cycle: 0.8  # S-phase progression
+  dna_damage_response: 0.6  # Elevated DDR
+  innate_immune: 0.2  # Suppressed immune response
+  mitochondrial_stress: 0.7  # Late-phase mitochondrial signature
+  antigen_presentation: 0.4  # Immune evasion
+  translation: 0.9  # Elevated translation
+
+# Perturbations
+perturbations:
+  - id: high_infection
+    perturbation_type: viral_infection
+    target_id: viral_LT
+    magnitude: 0.8  # High initial infection
+    timing: 5.0
+    parameters:
+      mechanism: initial_infection
+
+  - id: cell_cycle_stimulation
+    perturbation_type: gene_perturbation
+    target_id: CCND1
+    magnitude: 0.5
+    timing: 30.0  # After infection established
+    parameters:
+      mechanism: activation

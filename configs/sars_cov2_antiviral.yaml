@@ -1,0 +1,45 @@
+# SARS-CoV-2 with Antiviral Treatment
+experiment_id: sars_cov2_antiviral
+plugin: virus_host.sars_cov2
+simulator: hybrid
+simulation_length: 100.0
+timestep: 1.0
+output_path: outputs/sars_cov2/antiviral/
+save_interval: 1
+seed: 42
+
+# Environment settings
+environment:
+  temperature: 37.0
+  ph: 7.4
+  oxygen_level: 21.0
+  glucose_concentration: 5.0
+  nutrient_availability: {}
+  stress_factors: {}
+
+# Perturbations: infection followed by antiviral treatment
+perturbations:
+  - id: viral_infection
+    name: "Viral infection"
+    perturbation_type: viral_infection
+    target_id: null
+    magnitude: 1.0
+    duration: null
+    timing: 10.0
+    parameters:
+      viral_load: 1.0
+
+  - id: antiviral_drug
+    name: "Antiviral drug (replication inhibitor)"
+    perturbation_type: protein_inhibition
+    target_id: "Rep"
+    magnitude: 0.95
+    duration: null
+    timing: 30.0
+    parameters:
+      drug_type: "remdesivir"
+
+# Metadata
+metadata:
+  description: "SARS-CoV-2 infection with antiviral treatment"
+  researcher: "ISEF Project"

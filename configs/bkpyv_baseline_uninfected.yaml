@@ -1,0 +1,47 @@
+# BKPyV Baseline Uninfected Configuration
+# Reference: Research-validated baseline for uninfected renal tubular epithelial cell
+
+experiment_id: bkpyv_baseline_uninfected
+plugin: transplant.bk_polyomavirus
+simulator: bkpyv_specific
+simulation_length: 50.0
+timestep: 1.0
+output_path: outputs/bkpyv/baseline_uninfected/
+
+# Simulator parameters (research-validated)
+simulator_params:
+  # Drug effect parameters (AJT-16-821.pdf)
+  tacrolimus_enhancement_factor: 1.5  # Tacrolimus activates via FKBP-12
+  mtor_inhibition_factor: 0.5  # Sirolimus IC90 = 4 ng/mL
+
+  # Replication parameters
+  t_antigen_replication_threshold: 0.5
+  cell_cycle_s_phase_bonus: 2.0
+  dna_replication_coupling: 0.8
+
+  # Host response parameters
+  innate_immune_suppression_factor: 0.5
+  dna_damage_response_enhancement: 1.3
+
+  # Single-cell pathway-validated parameters (JVI S3/S4)
+  translation_enhancement_factor: 2.0
+  mitochondrial_function_importance: 0.8
+  protein_degradation_inhibition: 0.3
+
+# Initial state overrides
+initial_state_overrides:
+  viral_load: 0.0
+  infection_status: uninfected
+  viral_replication_phase: none
+  t_antigen_level: none
+  host_dna_synthesis: active
+  cell_cycle_phase: G0/G1
+
+# Drug exposure (none for baseline)
+drug_exposure:
+  tacrolimus: 0.0
+  sirolimus: 0.0
+  everolimus: 0.0
+
+# Perturbations
+perturbations: []

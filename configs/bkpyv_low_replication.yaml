@@ -1,0 +1,54 @@
+# BKPyV Low Replication Configuration
+# Reference: Low-level BKPyV infection (early phase, minimal viral load)
+
+experiment_id: bkpyv_low_replication
+plugin: transplant.bk_polyomavirus
+simulator: bkpyv_specific
+simulation_length: 100.0
+timestep: 1.0
+output_path: outputs/bkpyv/low_replication/
+
+# Simulator parameters (research-validated)
+simulator_params:
+  # Drug effect parameters (AJT-16-821.pdf)
+  tacrolimus_enhancement_factor: 1.5
+  mtor_inhibition_factor: 0.5
+
+  # Replication parameters
+  t_antigen_replication_threshold: 0.5
+  cell_cycle_s_phase_bonus: 2.0
+  dna_replication_coupling: 0.8
+
+  # Host response parameters
+  innate_immune_suppression_factor: 0.5
+  dna_damage_response_enhancement: 1.3
+
+  # Single-cell pathway-validated parameters
+  translation_enhancement_factor: 2.0
+  mitochondrial_function_importance: 0.8
+  protein_degradation_inhibition: 0.3
+
+# Initial state overrides
+initial_state_overrides:
+  viral_load: 1.5  # Low viral load
+  infection_status: latent
+  viral_replication_phase: early  # Early phase (0-24h)
+  t_antigen_level: low
+  host_dna_synthesis: active
+  cell_cycle_phase: G0/G1
+
+# Drug exposure (none for baseline comparison)
+drug_exposure:
+  tacrolimus: 0.0
+  sirolimus: 0.0
+  everolimus: 0.0
+
+# Perturbations
+perturbations:
+  - id: low_infection
+    perturbation_type: viral_infection
+    target_id: viral_LT
+    magnitude: 0.3  # Low initial infection
+    timing: 5.0  # Infection at t=5h
+    parameters:
+      mechanism: initial_infection

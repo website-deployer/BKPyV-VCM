@@ -1,0 +1,12 @@
+{
+  "experiment_id": "bkpyv_bkpyv_kidney_cell_001",
+  "simulator_type": "bkpyv_specific",
+  "plugin": "kidney_tubular_epithelial",
+  "config_id": "bkpyv_baseline",
+  "start_time": "2026-06-03T04:58:19.866429",
+  "end_time": "2026-06-03T04:58:19.913915",
+  "success": true,
+  "error_message": null,
+  "metadata": {},
+  "n_steps": 100
+}

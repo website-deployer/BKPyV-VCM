@@ -1,0 +1,12 @@
+{
+  "experiment_id": "mechanistic_minimal_cell_001",
+  "simulator_type": "mechanistic",
+  "plugin": "minimal_bacterium",
+  "config_id": "minimal_cell_antibiotic",
+  "start_time": "2026-06-03T04:12:09.777412",
+  "end_time": "2026-06-03T04:12:09.829998",
+  "success": true,
+  "error_message": null,
+  "metadata": {},
+  "n_steps": 100
+}

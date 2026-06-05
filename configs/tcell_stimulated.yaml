@@ -1,0 +1,45 @@
+# T-Cell with Stimulation and Checkpoint Blockade
+experiment_id: tcell_stimulated
+plugin: mammalian.immune_tcell
+simulator: mechanistic
+simulation_length: 75.0
+timestep: 0.5
+output_path: outputs/tcell/stimulated/
+save_interval: 1
+seed: 42
+
+# Environment settings
+environment:
+  temperature: 37.0
+  ph: 7.4
+  oxygen_level: 21.0
+  glucose_concentration: 5.0
+  nutrient_availability: {}
+  stress_factors: {}
+
+# Perturbations: TCR stimulation and checkpoint blockade
+perturbations:
+  - id: tcr_stimulation
+    name: "TCR stimulation"
+    perturbation_type: gene_overexpression
+    target_id: "CD3E"
+    magnitude: 2.0
+    duration: null
+    timing: 5.0
+    parameters:
+      antigen_present: true
+
+  - id: checkpoint_inhibition
+    name: "PD-1 blockade"
+    perturbation_type: protein_inhibition
+    target_id: "PD1"
+    magnitude: 0.95
+    duration: null
+    timing: 20.0
+    parameters:
+      antibody: "pembrolizumab"
+
+# Metadata
+metadata:
+  description: "T-cell with TCR stimulation and PD-1 blockade"
+  researcher: "ISEF Project"

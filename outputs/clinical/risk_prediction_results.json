@@ -1,0 +1,33 @@
+{
+  "baseline_auc_mean": 0.9265066394279877,
+  "baseline_auc_std": 0.012245056769060672,
+  "vcm_auc_mean": 0.9248872148450801,
+  "vcm_auc_std": 0.010799394211507477,
+  "auc_improvement": -0.001619424582907647,
+  "baseline_brier": 0.06316686464262967,
+  "vcm_brier": 0.06315578091090053,
+  "feature_importances": {
+    "age": 0.09293732505819274,
+    "sex": -3.5774475354989836,
+    "prior_transplant": 0.6690602065991346,
+    "diabetes": 0.25614844186910785,
+    "tacrolimus_use": 0.005509364655290674,
+    "hla_mismatch": -0.02909567630229264,
+    "donor_age": -0.001506545015217282,
+    "peak_viral_load_copies_log": -0.02683087909729434,
+    "weeks_above_1k": 0.04171396109548991,
+    "weeks_above_10k": 0.17472564904914015,
+    "area_under_curve_log": -0.052724341048876855,
+    "time_to_peak_weeks": -0.12120587494926895
+  },
+  "n_patients": 500,
+  "prevalence": 0.112,
+  "n_features_clinical": 7,
+  "n_features_vcm_added": 5,
+  "comparison_metrics": {
+    "delong_p_value": 0.9209894887976202,
+    "nri": -0.003238849165815294,
+    "interpretation": "VCM features do not meaningfully improve AUC (change: -0.002). NOTE: VCM features did not meaningfully improve prediction in this synthetic cohort. This may be due to: (1) Synthetic data generation may not capture real VCM feature-outcome relationships, (2) VCM features may need refinement, (3) Real clinical validation needed."
+  },
+  "honest_assessment": "VCM features do not meaningfully improve AUC (change: -0.002). NOTE: VCM features did not meaningfully improve prediction in this synthetic cohort. This may be due to: (1) Synthetic data generation may not capture real VCM feature-outcome relationships, (2) VCM features may need refinement, (3) Real clinical validation needed."
+}

@@ -1,0 +1,10 @@
+Parameter,Old heuristic value,New data-derived value,FC from data,Confidence,Source
+tacrolimus_enhancement_factor,1.5,1.8,1.2,HIGH,AJT-16-821.pdf
+mtor_inhibition_factor,0.5,0.5,1.0,HIGH,AJT-16-821.pdf
+cell_cycle_s_phase_bonus,2.0,2.2,1.1,MEDIUM,JVI jvi.01382-24-s0003.pdf
+dna_replication_coupling,0.8,0.85,1.0625,MEDIUM,AJT-16-821.pdf + JVI S4
+dna_damage_response_enhancement,1.3,1.5,1.1538461538461537,MEDIUM,JVI jvi.01382-24-s0004.pdf
+innate_immune_suppression_factor,0.5,0.4,0.8,MEDIUM,JVI jvi.01382-24-s0003.pdf
+translation_enhancement_factor,2.0,2.5,1.25,MEDIUM,JVI jvi.01382-24-s0003.pdf
+mitochondrial_function_importance,0.8,0.9,1.125,MEDIUM,JVI jvi.01382-24-s0004.pdf
+early_replication_window_end,24.0,24.0,1.0,HIGH,AJT-16-821.pdf

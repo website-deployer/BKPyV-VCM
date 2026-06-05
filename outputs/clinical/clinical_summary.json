@@ -1,0 +1,34 @@
+{
+  "baseline": {
+    "time_to_first_detectable_viremia_weeks": null,
+    "peak_viral_load_copies_per_ml": 0.0,
+    "week_of_peak": 0,
+    "time_above_screening_threshold_weeks": 0,
+    "time_above_treatment_threshold_weeks": 0,
+    "final_viral_load_week_52_copies_per_ml": 0.0
+  },
+  "infection": {
+    "time_to_first_detectable_viremia_weeks": 3,
+    "peak_viral_load_copies_per_ml": 276576.2209157249,
+    "week_of_peak": 12,
+    "time_above_screening_threshold_weeks": 36,
+    "time_above_treatment_threshold_weeks": 20,
+    "final_viral_load_week_52_copies_per_ml": 95.41916786025952
+  },
+  "tacrolimus": {
+    "time_to_first_detectable_viremia_weeks": 1,
+    "peak_viral_load_copies_per_ml": 3763050.619375907,
+    "week_of_peak": 10,
+    "time_above_screening_threshold_weeks": 51,
+    "time_above_treatment_threshold_weeks": 50,
+    "final_viral_load_week_52_copies_per_ml": 31560.870432599117
+  },
+  "sirolimus": {
+    "time_to_first_detectable_viremia_weeks": 6,
+    "peak_viral_load_copies_per_ml": 101729.15644126713,
+    "week_of_peak": 14,
+    "time_above_screening_threshold_weeks": 19,
+    "time_above_treatment_threshold_weeks": 8,
+    "final_viral_load_week_52_copies_per_ml": 1.1506121785754724
+  }
+}
