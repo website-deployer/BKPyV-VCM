@@ -1,0 +1,71 @@
+# Heavy data files
+data/
+data/**/*
+*.tar
+*.tar.gz
+*.gz
+*.zip
+*.csv
+*.xlsx
+*.xls
+
+# Output files
+outputs/
+outputs/**/*
+
+# Cache and temporary files
+.pytest_cache/
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+.playwright-mcp/
+
+# Research data and analysis
+data/research/pdfs/*.pdf
+data/research/docx/
+data/research/archives/
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Logs
+*.log
+
+# Local environment files
+.env
+.env.local
+*.local
+
+# Backup files
+*.bak
+*~
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Documentation builds
+docs/_build/
+site/
