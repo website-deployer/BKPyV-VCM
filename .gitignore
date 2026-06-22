@@ -8,6 +8,14 @@ data/**/*
 *.csv
 *.xlsx
 *.xls
+*.h5ad
+*.parquet
+*.CEL
+*.cel
+
+# Claude worktrees (copies of all data)
+.claude/
+.claude/**/*
 
 # Output files
 outputs/
@@ -22,9 +30,12 @@ __pycache__/
 .playwright-mcp/
 
 # Research data and analysis
-data/research/pdfs/*.pdf
-data/research/docx/
-data/research/archives/
+*.pdf
+*.docx
+*.tif
+*.tiff
+data/research/
+data/research/**/*
 
 # Jupyter notebook checkpoints
 .ipynb_checkpoints/
