@@ -1,6 +1,6 @@
 """Core domain models for the Virtual Cell Model platform."""
 
-from datetime import datetime
+from datetime import datetime, timezone
 from enum import Enum
 from typing import Any, Dict, List, Optional, Union
 
@@ -217,7 +217,7 @@ class SimulationResult(BaseModel):
     steps: List[SimulationStep] = Field(default_factory=list)
     final_state: Optional[CellState] = Field(default=None)
     metadata: Dict[str, Any] = Field(default_factory=dict)
-    start_time: datetime = Field(default_factory=datetime.utcnow)
+    start_time: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     end_time: Optional[datetime] = Field(default=None)
     success: bool = Field(default=True)
     error_message: Optional[str] = Field(default=None)
